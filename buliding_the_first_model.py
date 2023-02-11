@@ -13,6 +13,7 @@ first model => [batch size = 64]
 second model => [batch size = 32]
 third model => [batch size = 32 , input filters = 64]
 model no.4 => [add conv , i/p filters = 124]
+model no.5 => [batch size  = 64]
 ****************************************************************'''
 
 
@@ -70,7 +71,7 @@ with tf.device("/GPU:0"):                                         *
 #compiling
 model.compile(loss='binary_crossentropy',optimizer='adam',metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
 epochs = 100
-batch_size = 32
+batch_size = 64
 
 #fitting
 with tf.device("/GPU:0"):
@@ -80,7 +81,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model4.h5')
+model.save('./training/model5.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
