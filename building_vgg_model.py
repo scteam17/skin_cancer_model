@@ -60,7 +60,7 @@ with tf.device("/GPU:0"):
     except Exception as e:
         print(e)
 print("saving the model...")
-model.save('./training/theFirstModelnew5.h5')
+model.save('./training/theFirstModelnew6.h5')
 
 
 
