@@ -32,7 +32,9 @@ model no.14  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
 model no.15  => [batch size  = 124, epoch = 250] 5conv layers with 224 filters)
                 lr=0.05, momentum=0.9, decay=0.01
 model no.16  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
-                lr=0.05, momentum=0.5, decay=0.01
+                lr=0.01, momentum=0.5, decay=0.01
+model no.17  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
+                lr=0.01, momentum=0.5, decay=0.05
 
 
 ****************************************************************'''
@@ -94,7 +96,7 @@ with tf.device("/GPU:0"):                                         *
 
 #try sgd optimzer
 from keras.optimizers import SGD
-opt = SGD(lr=0.05, momentum=0.5, decay=0.01)
+opt = SGD(lr=0.01, momentum=0.9, decay=0.05)
 
 
 
@@ -111,7 +113,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model16.h5')
+model.save('./training/model17.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
