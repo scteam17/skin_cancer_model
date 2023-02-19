@@ -9,15 +9,17 @@ NOTE ->   1)all of them is not that important only important part *
           remember you can't get them back once the program close *
           
 input filters = 32
-first model => [batch size = 64]
+first model  => [batch size = 64]
 second model => [batch size = 32]
-third model => [batch size = 32 , input filters = 64]
-model no.4 => [add conv , i/p filters = 124]
-model no.5 => [batch size  = 64]
-model no.6 => [batch size  = 124] remove one conv 3conv layers
-model no.7 => [batch size  = 124] 4conv layers
-model no.8 => [batch size  = 124] 5conv layers
-model no.9 => [batch size  = 124] 5conv layers with 224 filters
+third model  => [batch size = 32 , input filters = 64]
+model no.4   => [add conv , i/p filters = 124]
+model no.5   => [batch size  = 64]
+model no.6   => [batch size  = 124] remove one conv 3conv layers
+model no.7   => [batch size  = 124] 4conv layers
+model no.8   => [batch size  = 124] 5conv layers
+model no.9   => [batch size  = 124] 5conv layers with 224 filters
+model no.10  => [batch size  = 124] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+                lr=0.01, momentum=0.9, decay=0.01
 
 
 ****************************************************************'''
@@ -77,8 +79,14 @@ fitting the model using gpu if you want to use cpu just delete the*
 with tf.device("/GPU:0"):                                         *  
 ****************************************************************'''
 
+#try sgd optimzer
+from keras.optimizers import SGD
+opt = SGD(lr=0.01, momentum=0.9, decay=0.01)
+
+
+
 #compiling
-model.compile(loss='binary_crossentropy',optimizer='adam',metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
+model.compile(loss='binary_crossentropy',optimizer=opt,metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
 epochs = 100
 batch_size = 124
 
@@ -90,7 +98,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model9.h5')
+model.save('./training/model10.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
