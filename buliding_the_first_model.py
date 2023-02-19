@@ -35,9 +35,13 @@ model no.16  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
                 lr=0.01, momentum=0.5, decay=0.01
 model no.17  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
                 lr=0.01, momentum=0.5, decay=0.05
-
 model no.18  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
-
+                lr=0.01, momentum=0.5, decay=0.05
+model no.19  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
+                lr=0.005, momentum=0.5, decay=0.05
+                
+                
+                
 ****************************************************************'''
 
 
@@ -97,13 +101,13 @@ with tf.device("/GPU:0"):                                         *
 
 #try sgd optimzer
 from keras.optimizers import SGD
-opt = SGD(lr=0.01, momentum=0.9, decay=0.05)
+opt = SGD(lr=0.005, momentum=0.9, decay=0.05)
 
 
 
 #compiling
 model.compile(loss='binary_crossentropy',optimizer=opt,metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
-epochs = 200
+epochs = 100
 batch_size = 124
 
 #fitting
@@ -114,7 +118,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model18.h5')
+model.save('./training/model19.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
