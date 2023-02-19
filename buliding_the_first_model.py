@@ -20,6 +20,8 @@ model no.8   => [batch size  = 124] 5conv layers
 model no.9   => [batch size  = 124] 5conv layers with 224 filters
 model no.10  => [batch size  = 124] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
                 lr=0.01, momentum=0.9, decay=0.01
+model no.11  => [batch size  = 124] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+                lr=0.005, momentum=0.9, decay=0.01
 
 
 ****************************************************************'''
@@ -81,7 +83,7 @@ with tf.device("/GPU:0"):                                         *
 
 #try sgd optimzer
 from keras.optimizers import SGD
-opt = SGD(lr=0.01, momentum=0.9, decay=0.01)
+opt = SGD(lr=0.005, momentum=0.9, decay=0.01)
 
 
 
@@ -98,7 +100,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model10.h5')
+model.save('./training/model11.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
