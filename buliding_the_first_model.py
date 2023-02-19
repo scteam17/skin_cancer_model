@@ -16,6 +16,7 @@ model no.4 => [add conv , i/p filters = 124]
 model no.5 => [batch size  = 64]
 model no.6 => [batch size  = 124] remove one conv 3conv layers
 model no.7 => [batch size  = 124] 4conv layers
+model no.8 => [batch size  = 124] 5conv layers
 
 
 ****************************************************************'''
@@ -60,6 +61,9 @@ model = Sequential([
         Conv2D(32,kernel_size=(3, 3),padding='Same', activation="relu"),
         MaxPooling2D(pool_size=(2, 2)),
         Dropout(0.25),
+        Conv2D(32,kernel_size=(3, 3),padding='Same', activation="relu"),
+        MaxPooling2D(pool_size=(2, 2)),
+        Dropout(0.25),
         Flatten(),
         Dense(128, activation='relu'),
         Dense(2, activation='softmax')
@@ -85,7 +89,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model7.h5')
+model.save('./training/model8.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
