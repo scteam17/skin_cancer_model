@@ -22,6 +22,8 @@ model no.10  => [batch size  = 124] 5conv layers with 224 filters +testing diffe
                 lr=0.01, momentum=0.9, decay=0.01
 model no.11  => [batch size  = 124] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
                 lr=0.005, momentum=0.9, decay=0.01
+model no.12  => [batch size  = 124, epoch = 150] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+                lr=0.005, momentum=0.9, decay=0.01
 
 
 ****************************************************************'''
@@ -89,7 +91,7 @@ opt = SGD(lr=0.005, momentum=0.9, decay=0.01)
 
 #compiling
 model.compile(loss='binary_crossentropy',optimizer=opt,metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
-epochs = 100
+epochs = 150
 batch_size = 124
 
 #fitting
@@ -100,7 +102,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model11.h5')
+model.save('./training/model12.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
