@@ -39,6 +39,8 @@ model no.18  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
                 lr=0.01, momentum=0.5, decay=0.05
 model no.19  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
                 lr=0.005, momentum=0.5, decay=0.05
+model no.20  => [batch size  = 124, epoch = 100] 3conv
+                lr=0.005, momentum=0.5, decay=0.01
                 
                 
                 
@@ -72,16 +74,10 @@ X_test = X_test/255
 #------------------BUILDING THE MODEL----------------------------------------------
 
 model = Sequential([
-        Conv2D(248,kernel_size=(3, 3),padding='Same', activation="relu"),
-        MaxPooling2D(pool_size=(2, 2)),
-        Dropout(0.25),
         Conv2D(124,kernel_size=(3, 3),padding = 'Same',input_shape=(64,64,3),activation="relu"),
         MaxPooling2D(pool_size=(2, 2)),
         Dropout(0.25),
         Conv2D(64,kernel_size=(3, 3),padding='Same', activation="relu"),
-        MaxPooling2D(pool_size=(2, 2)),
-        Dropout(0.25),
-        Conv2D(32,kernel_size=(3, 3),padding='Same', activation="relu"),
         MaxPooling2D(pool_size=(2, 2)),
         Dropout(0.25),
         Conv2D(32,kernel_size=(3, 3),padding='Same', activation="relu"),
@@ -101,7 +97,7 @@ with tf.device("/GPU:0"):                                         *
 
 #try sgd optimzer
 from keras.optimizers import SGD
-opt = SGD(lr=0.005, momentum=0.9, decay=0.05)
+opt = SGD(lr=0.005, momentum=0.9, decay=0.01)
 
 
 
@@ -118,7 +114,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model19.h5')
+model.save('./training/model20.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
