@@ -18,18 +18,21 @@ model no.6   => [batch size  = 124] remove one conv 3conv layers
 model no.7   => [batch size  = 124] 4conv layers
 model no.8   => [batch size  = 124] 5conv layers
 model no.9   => [batch size  = 124] 5conv layers with 224 filters
-model no.10  => [batch size  = 124] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+---------------------testing different optimizer(from adam to sgd)------------------
+model no.10  => [batch size  = 124] 5conv layers with 224 filters 
                 lr=0.01, momentum=0.9, decay=0.01
-model no.11  => [batch size  = 124] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+model no.11  => [batch size  = 124] 5conv layers with 224 filters
                 lr=0.005, momentum=0.9, decay=0.01
-model no.12  => [batch size  = 124, epoch = 150] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+model no.12  => [batch size  = 124, epoch = 150] 5conv layers with 224 filters 
                 lr=0.005, momentum=0.9, decay=0.01
-model no.13  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+model no.13  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters 
                 lr=0.05, momentum=0.9, decay=0.01
-model no.14  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+model no.14  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
                 lr=0.05, momentum=0.9, decay=0.01
-model no.15  => [batch size  = 124, epoch = 250] 5conv layers with 224 filters +testing different optimizer(from adam to sgd)
+model no.15  => [batch size  = 124, epoch = 250] 5conv layers with 224 filters)
                 lr=0.05, momentum=0.9, decay=0.01
+model no.16  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
+                lr=0.05, momentum=0.5, decay=0.01
 
 
 ****************************************************************'''
@@ -91,13 +94,13 @@ with tf.device("/GPU:0"):                                         *
 
 #try sgd optimzer
 from keras.optimizers import SGD
-opt = SGD(lr=0.05, momentum=0.9, decay=0.01)
+opt = SGD(lr=0.05, momentum=0.5, decay=0.01)
 
 
 
 #compiling
 model.compile(loss='binary_crossentropy',optimizer=opt,metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
-epochs = 250
+epochs = 100
 batch_size = 124
 
 #fitting
@@ -108,7 +111,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model15.h5')
+model.save('./training/model16.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
