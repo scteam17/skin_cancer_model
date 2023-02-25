@@ -74,3 +74,9 @@ model no.20  => [batch size  = 124, epoch = 100] 3conv
                 * lower than 80
 
 
+model no.21  => [batch size  = 124, epoch = 250] 5conv layers with 224 filters)
+                lr=0.05, momentum=0.9, decay=0.01  <=cheking model no 15 again
+		best accuracy = 85 when epoch = 250
+		
+
+model no.22   => [batch size  = 124] 5conv layers with 224 filters dropout = 0.1
