@@ -1,4 +1,4 @@
-f'''****************************************************************
+'''****************************************************************
 this model take the data from the training folder ,build the model*
 then save it in the training folder again also plots the accuracy *
 loss , recall and percision vs the epoch                          *
@@ -8,40 +8,7 @@ NOTE ->   1)all of them is not that important only important part *
           2)once the plot is shown don't forget to save them      *
           remember you can't get them back once the program close *
           
-input filters = 32
-first model  => [batch size = 64]
-second model => [batch size = 32]
-third model  => [batch size = 32 , input filters = 64]
-model no.4   => [add conv , i/p filters = 124]
-model no.5   => [batch size  = 64]
-model no.6   => [batch size  = 124] remove one conv 3conv layers
-model no.7   => [batch size  = 124] 4conv layers
-model no.8   => [batch size  = 124] 5conv layers
-model no.9   => [batch size  = 124] 5conv layers with 224 filters
----------------------testing different optimizer(from adam to sgd)------------------
-model no.10  => [batch size  = 124] 5conv layers with 224 filters 
-                lr=0.01, momentum=0.9, decay=0.01
-model no.11  => [batch size  = 124] 5conv layers with 224 filters
-                lr=0.005, momentum=0.9, decay=0.01
-model no.12  => [batch size  = 124, epoch = 150] 5conv layers with 224 filters 
-                lr=0.005, momentum=0.9, decay=0.01
-model no.13  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters 
-                lr=0.05, momentum=0.9, decay=0.01
-model no.14  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
-                lr=0.05, momentum=0.9, decay=0.01
-model no.15  => [batch size  = 124, epoch = 250] 5conv layers with 224 filters)
-                lr=0.05, momentum=0.9, decay=0.01
-model no.16  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
-                lr=0.01, momentum=0.5, decay=0.01
-model no.17  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
-                lr=0.01, momentum=0.5, decay=0.05
-model no.18  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
-                lr=0.01, momentum=0.5, decay=0.05
-model no.19  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
-                lr=0.005, momentum=0.5, decay=0.05
-model no.20  => [batch size  = 124, epoch = 100] 3conv
-                lr=0.005, momentum=0.5, decay=0.01
-                
+
                 
                 
 ****************************************************************'''
@@ -74,7 +41,10 @@ X_test = X_test/255
 #------------------BUILDING THE MODEL----------------------------------------------
 
 model = Sequential([
-        Conv2D(124,kernel_size=(3, 3),padding = 'Same',input_shape=(64,64,3),activation="relu"),
+        Conv2D(224,kernel_size=(3, 3),padding = 'Same',input_shape=(64,64,3),activation="relu"),
+        MaxPooling2D(pool_size=(2, 2)),
+        Dropout(0.25),
+        Conv2D(224,kernel_size=(3, 3),padding = 'Same',input_shape=(64,64,3),activation="relu"),
         MaxPooling2D(pool_size=(2, 2)),
         Dropout(0.25),
         Conv2D(64,kernel_size=(3, 3),padding='Same', activation="relu"),
@@ -97,13 +67,13 @@ with tf.device("/GPU:0"):                                         *
 
 #try sgd optimzer
 from keras.optimizers import SGD
-opt = SGD(lr=0.005, momentum=0.9, decay=0.01)
+opt = SGD(lr=0.05, momentum=0.9, decay=0.01)
 
 
 
 #compiling
 model.compile(loss='binary_crossentropy',optimizer=opt,metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
-epochs = 100
+epochs = 250
 batch_size = 124
 
 #fitting
@@ -114,7 +84,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model20.h5')
+model.save('./training/model21.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------

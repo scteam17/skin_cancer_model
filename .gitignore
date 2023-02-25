@@ -1,8 +1,11 @@
 /material.txt
 /LOG.docx
+/MODEELLOG.docx
+
 
 origan32/
 training/
 data/
 train/
+model_plots/
 test/

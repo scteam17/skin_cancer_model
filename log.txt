@@ -1,0 +1,76 @@
+input filters = 32
+
+first model  => [batch size = 64]
+                best accuracy = 85 when epoch = 40
+
+second model => [batch size = 32]
+                best accuracy = 85 when epoch = 20
+
+third model  => [batch size = 32 , input filters = 64]
+                best accuracy = 85 when epoch = 18
+
+model no.4   => [add conv , i/p filters = 124]
+                best accuracy = 85 when epoch = 20
+
+model no.5   => [batch size  = 64]
+                best accuracy = 85 when epoch = 30
+
+model no.6   => [batch size  = 124] remove one conv 3conv layers
+                best accuracy = 85 when epoch = 30
+
+model no.7   => [batch size  = 124] 4conv layers
+                best accuracy = 85 when epoch = 20
+
+model no.8   => [batch size  = 124] 5conv layers
+                best accuracy = 85 when epoch = 40
+
+model no.9   => [batch size  = 124] 5conv layers with 224 filters
+                best accuracy = 85 when epoch = 30
+
+
+---------------------testing different optimizer(from adam to sgd)------------------
+model no.10  => [batch size  = 124] 5conv layers with 224 filters
+                lr=0.01, momentum=0.9, decay=0.01
+                * lower than 80
+
+model no.11  => [batch size  = 124] 5conv layers with 224 filters
+                lr=0.005, momentum=0.9, decay=0.01
+                * lower than 80
+
+model no.12  => [batch size  = 124, epoch = 150] 5conv layers with 224 filters
+                lr=0.005, momentum=0.9, decay=0.01
+                * lower than 80
+
+model no.13  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters
+                lr=0.05, momentum=0.9, decay=0.01
+                * lower than 80
+
+model no.14  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
+                lr=0.05, momentum=0.9, decay=0.01
+                best accuracy = 85 when epoch = 200
+
+model no.15  => [batch size  = 124, epoch = 250] 5conv layers with 224 filters)
+                lr=0.05, momentum=0.9, decay=0.01
+                * lower than 80   <====TODO: check again not a reasonable result
+
+model no.16  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
+                lr=0.01, momentum=0.5, decay=0.01
+                * lower than 55
+
+model no.17  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
+                lr=0.01, momentum=0.5, decay=0.05
+                * lower than 80
+
+model no.18  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
+                lr=0.01, momentum=0.5, decay=0.05
+                * lower than 75
+
+model no.19  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
+                lr=0.005, momentum=0.5, decay=0.05
+                * lower than 54
+
+model no.20  => [batch size  = 124, epoch = 100] 3conv
+                lr=0.005, momentum=0.5, decay=0.01
+                * lower than 80
+
+
