@@ -64,12 +64,11 @@ model = Sequential([
 fitting the model using gpu if you want to use cpu just delete the*
 with tf.device("/GPU:0"):                                         *  
 ****************************************************************'''
-
-opt = "adam"
+opt = tf.keras.optimizers.experimental.RMSprop(learning_rate=0.05)
 
 #compiling
 model.compile(loss='binary_crossentropy',optimizer=opt,metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
-epochs = 150
+epochs = 100
 batch_size = 124
 
 #fitting
@@ -80,7 +79,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model22.h5')
+model.save('./training/model24.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------

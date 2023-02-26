@@ -28,7 +28,7 @@ model no.9   => [batch size  = 124] 5conv layers with 224 filters
                 best accuracy = 85 when epoch = 30
 
 
----------------------testing different optimizer(from adam to sgd)------------------
+---------------------testing different optimizer(SGD)------------------
 model no.10  => [batch size  = 124] 5conv layers with 224 filters
                 lr=0.01, momentum=0.9, decay=0.01
                 * lower than 80
@@ -51,7 +51,7 @@ model no.14  => [batch size  = 124, epoch = 200] 5conv layers with 224 filters)
 
 model no.15  => [batch size  = 124, epoch = 250] 5conv layers with 224 filters)
                 lr=0.05, momentum=0.9, decay=0.01
-                * lower than 80   <====TODO: check again not a reasonable result
+                * lower than 80
 
 model no.16  => [batch size  = 124, epoch = 100] 5conv layers with 224 filters)
                 lr=0.01, momentum=0.5, decay=0.01
@@ -80,3 +80,12 @@ model no.21  => [batch size  = 124, epoch = 250] 5conv layers with 224 filters)
 		
 
 model no.22   => [batch size  = 124] 5conv layers with 224 filters dropout = 0.1
+
+---------------------testing different optimizer(rmsprop)------------------
+model no.23   => [batch size = 32 filters = 124]
+                 lr = 0.1
+                 no comment
+
+model no.24   => [batch size = 124 filters = 124]
+                 lr = 0.05
+                 rmsprop is very bad
