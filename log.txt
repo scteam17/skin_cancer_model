@@ -95,4 +95,6 @@ model no.25   => [batch size = 124 filters = 124]
                  lr = 0.001
                  adam is best optimizer
 
-
+--------------------------adam------------------------------
+model no.26   => [batch size = 32 filters = 448] 5conv
+                 acc = 85 with 20 epoch

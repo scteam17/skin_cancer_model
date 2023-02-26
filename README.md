@@ -1,10 +1,8 @@
-# model no 25
+# model no 26
 
-using adadelta optimizer with
-
+retrun to adam 
 * epoch = 100
-* batch_size = 64
-* lr = 0.001 => defult
+* batch_size = 32
+* 5 conv with init filter 448
 
-
-result : even worse than rmsprops
+result : acc = 85 => epoch = 20

@@ -43,13 +43,16 @@ X_test = X_test/255
 model = Sequential([
         Conv2D(224,kernel_size=(3, 3),padding = 'Same',input_shape=(64,64,3),activation="relu"),
         MaxPooling2D(pool_size=(2, 2)),
-        Dropout(0.1),
-        Conv2D(124,kernel_size=(3, 3),padding = 'Same',input_shape=(64,64,3),activation="relu"),
+        Dropout(0.25),
+        Conv2D(224,kernel_size=(3, 3),padding = 'Same',activation="relu"),
         MaxPooling2D(pool_size=(2, 2)),
-        Dropout(0.1),
+        Dropout(0.25),
+        Conv2D(124,kernel_size=(3, 3),padding = 'Same',activation="relu"),
+        MaxPooling2D(pool_size=(2, 2)),
+        Dropout(0.25),
         Conv2D(64,kernel_size=(3, 3),padding='Same', activation="relu"),
         MaxPooling2D(pool_size=(2, 2)),
-        Dropout(0.1),
+        Dropout(0.25),
         Conv2D(32,kernel_size=(3, 3),padding='Same', activation="relu"),
         MaxPooling2D(pool_size=(2, 2)),
         Dropout(0.25),
@@ -64,13 +67,13 @@ model = Sequential([
 fitting the model using gpu if you want to use cpu just delete the*
 with tf.device("/GPU:0"):                                         *  
 ****************************************************************'''
-opt = tf.keras.optimizers.Adadelta(learning_rate=0.001)
+opt = "adam"
 
 
 #compiling
 model.compile(loss='binary_crossentropy',optimizer=opt,metrics=[tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), "acc"])
 epochs = 100
-batch_size = 64
+batch_size = 32
 
 #fitting
 with tf.device("/GPU:0"):
@@ -80,7 +83,7 @@ with tf.device("/GPU:0"):
         print(e)
 
 #saving
-model.save('./training/model25.h5')
+model.save('./training/model26.h5')
 
 
 #------------------PLOTTING-----------------------------------------------------------
