@@ -1,3 +1,10 @@
-# model no 24
+# model no 25
 
-using rmsprops only gives bad results 
+using adadelta optimizer with
+
+* epoch = 100
+* batch_size = 64
+* lr = 0.001 => defult
+
+
+result : even worse than rmsprops

@@ -89,3 +89,10 @@ model no.23   => [batch size = 32 filters = 124]
 model no.24   => [batch size = 124 filters = 124]
                  lr = 0.05
                  rmsprop is very bad
+
+---------------------testing different optimizer(adadelta)------------------
+model no.25   => [batch size = 124 filters = 124]
+                 lr = 0.001
+                 adam is best optimizer
+
+
