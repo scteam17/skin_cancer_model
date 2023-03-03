@@ -54,20 +54,3 @@ plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
 
-# summarize history for recall
-plt.plot(history.history['recall'])
-plt.plot(history.history['val_recall'])
-plt.title('model recall')
-plt.ylabel('recall')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-plt.show()
-
-# summarize history for precision
-plt.plot(history.history['precision'])
-plt.plot(history.history['val_precision'])
-plt.title('model precision')
-plt.ylabel('precision')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-plt.show()

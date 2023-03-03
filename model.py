@@ -12,7 +12,7 @@ class Model:
     def normal_model(self):
         return Sequential([
             self.data_augmentation(),
-            #Conv2D(124,kernel_size=(3, 3),padding = 'Same', input_shape=(64,64,3),activation="relu"),
+            #Conv2D(124,kernel_size=(3, 3),padding = 'Same', input_shape=(64,64,3),activation="relu"), #comment if you use augmnetation
             Conv2D(124,kernel_size=(3, 3),padding = 'Same',activation="relu"),
             MaxPooling2D(pool_size=(2, 2)),
             Dropout(0.25),

@@ -1,8 +1,5 @@
-# model no 26
+# model test 3 
 
-retrun to adam 
-* epoch = 100
-* batch_size = 32
-* 5 conv with init filter 448
-
-result : acc = 85 => epoch = 20
+epoch = 100
+need to be trained more
+accuracy more than 85

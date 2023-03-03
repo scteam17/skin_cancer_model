@@ -99,3 +99,6 @@ model no.25   => [batch size = 124 filters = 124]
 model no.26   => [batch size = 32 filters = 448] 5conv
                  acc = 85 with 20 epoch
 
+-------------------------data augmentation--------------------------
+modeltest3   => [batch size = 32 epoch = 100] 5conv
+                 need more training
