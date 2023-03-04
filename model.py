@@ -2,11 +2,11 @@
 import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
-
+from keras.applications import ResNet152
 #------------------BUILDING THE MODEL----------------------------------------------
 class Model:
     def __init__(self):
-        self.model = self.normal_model()
+        self.model = self.ResNet()
         self.history = ''
 
     def normal_model(self):
@@ -34,7 +34,7 @@ class Model:
         ])
 
     def ResNet(self):
-        pass
+        return ResNet152(include_top=True,weights=None,input_tensor=None,input_shape=(64,64,3),pooling='max',classes=2)
 
     def VGG(self):
         pass

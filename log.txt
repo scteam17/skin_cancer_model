@@ -102,3 +102,20 @@ model no.26   => [batch size = 32 filters = 448] 5conv
 -------------------------data augmentation--------------------------
 modeltest3   => [batch size = 32 epoch = 100] 5conv
                  need more training
+
+__________________________ResNet model_____________________________
+
+model no.27  => [batch size = 32  epoch = 20 polling = max]
+                can be improved more
+
+model no.28  => [polling = avg]
+                bad result
+
+model no.29  => [polling = avg batch size = 64]
+                more improvement
+
+model no.30  => [polling = avg batch size = 64 epoch = 25]
+                no improvment
+
+model no.31  => [polling = max, batch size = 64 epoch = 25]
+                overfit

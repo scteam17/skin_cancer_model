@@ -21,10 +21,10 @@ X_test = X_test/255
 
 #------------------paramaters----------------------------------------------------
 opt = "adam"
-epochs = 100
-batch_size = 32
-#dir = './training/model26.h5'
-dir = './training/modeltest3.h5'
+epochs = 50
+batch_size = 64
+dir = './training/model31.h5'
+#dir = './training/modeltest3.h5'
 validation = (X_test,y_test)
 
 #-------------------------running------------------------------------------------------
@@ -33,14 +33,13 @@ model.compile(opt)
 model.fit(X_train,y_train,validation,batch_size,epochs)
 model.save(dir)
 history = model.history
-print(history.history.keys())
 
 #------------------PLOTTING-----------------------------------------------------------
 # summarize history for accuracy
-plt.plot(history.history['acc'])
-plt.plot(history.history['val_acc'])
-plt.title('model accuracy')
-plt.ylabel('accuracy')
+plt.plot(history.history['recall'])
+plt.plot(history.history['val_recall'])
+plt.title('model recall')
+plt.ylabel('recall')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
