@@ -6,6 +6,7 @@ from keras.utils.np_utils import to_categorical  # convert to one-hot-encoding
 
 #------------------LOADING THE DATA------------------------------------------------
 #loading
+#train.npy for 64,64  train72 for 71,71
 X_train = np.load('./training/X_train.npy')
 X_test = np.load('./training/X_test.npy')
 y_train = np.load('./training/y_train.npy')
@@ -22,9 +23,9 @@ X_test = X_test/255
 #------------------paramaters----------------------------------------------------
 opt = "adam"
 epochs = 50
-batch_size = 64
-dir = './training/model31.h5'
-#dir = './training/modeltest3.h5'
+batch_size = 32
+dir = './training/models/model34.h5'
+#dir = './training/models/modeltest3.h5'
 validation = (X_test,y_test)
 
 #-------------------------running------------------------------------------------------

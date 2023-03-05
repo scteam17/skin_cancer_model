@@ -24,7 +24,7 @@ folder_malignant_test = 'data/test/malignant'
 
 
 #to read the image then resize them
-read = lambda imname: np.asarray(Image.open(imname).convert("RGB").resize((64,64)))
+read = lambda imname: np.asarray(Image.open(imname).convert("RGB").resize((71,71))) #71,71 for the xception model
 
 
 
@@ -104,11 +104,11 @@ plt.show()
 
 
 print("saving the data as numpy arrays")
-np.save('./training/X_train',X_train)
-np.save('./training/X_test',X_test)
+np.save('./training/X_train72',X_train)
+np.save('./training/X_test72',X_test)
 print("traning and test data saved ")
-np.save('./training/y_train',y_train)
-np.save('./training/y_test',y_test)
+np.save('./training/y_train72',y_train)
+np.save('./training/y_test72',y_test)
 print("training and test label saved")
 print("all data saved")
 print("program finishes")

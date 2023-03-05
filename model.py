@@ -3,10 +3,13 @@ import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 from keras.applications import ResNet152
+from keras.applications.vgg19 import VGG19
+from keras.applications.mobilenet import MobileNet
+from keras.applications.xception import Xception
 #------------------BUILDING THE MODEL----------------------------------------------
 class Model:
     def __init__(self):
-        self.model = self.ResNet()
+        self.model = self.mobileNet()
         self.history = ''
 
     def normal_model(self):
@@ -33,10 +36,19 @@ class Model:
             Dense(2, activation='softmax')
         ])
 
-    def ResNet(self):
+    def ResNet(self):  #TODO: try play with different parameters
         return ResNet152(include_top=True,weights=None,input_tensor=None,input_shape=(64,64,3),pooling='max',classes=2)
 
-    def VGG(self):
+    def VGG(self):#TODO : try play with different parameters
+        return VGG19(weights=None, input_shape=(64,64,3),classes=2)
+
+    def mobileNet(self):#TODO: try play with different parameters
+        return MobileNet(input_shape=(64,64,3),weights=None,classes=2)
+
+    def xceptionNet(self):#TODO: try play with different parameters
+        return Xception(weights=None,input_shape=(71,71,3),classes=2)
+
+    def alexNet(self):#TODO: try play with different parameters
         pass
 
     def data_augmentation(self):
