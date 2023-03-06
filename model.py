@@ -9,7 +9,7 @@ from keras.applications.xception import Xception
 #------------------BUILDING THE MODEL----------------------------------------------
 class Model:
     def __init__(self):
-        self.model = self.mobileNet()
+        self.model = self.regnet()
         self.history = ''
 
     def normal_model(self):
@@ -49,7 +49,37 @@ class Model:
         return Xception(weights=None,input_shape=(71,71,3),classes=2)
 
     def alexNet(self):#TODO: try play with different parameters
-        pass
+        return Sequential([
+            # 1st conv
+            Conv2D(96, (11, 11), strides=(4, 4), activation='relu', input_shape=(64, 64, 3)),
+            tf.keras.layers.BatchNormalization(),
+            MaxPooling2D(2, strides=(2, 2)),
+            # 2nd conv
+            Conv2D(256, (11, 11), strides=(1, 1), activation='relu', padding="same"),
+            tf.keras.layers.BatchNormalization(),
+            # 3rd conv
+            Conv2D(384, (3, 3), strides=(1, 1), activation='relu', padding="same"),
+            tf.keras.layers.BatchNormalization(),
+            # 4th conv
+            Conv2D(384, (3,3),strides=(1,1), activation='relu',padding="same"),
+            tf.keras.layers.BatchNormalization(),
+            # 5th Conv
+            Conv2D(256, (3, 3), strides=(1, 1), activation='relu',padding="same"),
+            tf.keras.layers.BatchNormalization(),
+            MaxPooling2D(2, strides=(2, 2)),
+            # To Flatten layer
+            Flatten(),
+            # To FC layer 1
+            Dense(4096, activation='relu'),
+            Dropout(0.5),
+            #To FC layer 2
+            Dense(2000, activation='relu'),
+            Dropout(0.5),
+            Dense(2, activation='softmax')
+          ])
+
+    def regnet(self):
+        return tf.keras.applications.regnet.RegNetX160(weights=None,input_shape=(64,64,3),classes=2)
 
     def data_augmentation(self):
         return  Sequential([

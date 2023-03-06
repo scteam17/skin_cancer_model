@@ -24,7 +24,7 @@ X_test = X_test/255
 opt = "adam"
 epochs = 50
 batch_size = 32
-dir = './training/models/model34.h5'
+dir = './training/models/model36.h5'
 #dir = './training/models/modeltest3.h5'
 validation = (X_test,y_test)
 

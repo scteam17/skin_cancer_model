@@ -1,4 +1,4 @@
-# VGG , MobileNet , XceptionNet
+# VGG , MobileNet , XceptionNet ,AlexNet ,RegNet
 
     * batch size = 32
     * epoch = 50
@@ -10,3 +10,7 @@
     near 80
 ## MobileNet 
     near 80
+## AlexNet
+    near 80 
+## RegNet
+    bad behavier

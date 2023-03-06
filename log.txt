@@ -136,3 +136,13 @@ model no.33  => [batch size 32 epoch 50]
 
 model no.34  => [batch size 32 epoch 50]
                 near 80
+
+----------------------alexNet---------------------------------------
+
+model no.35  => [batch size 32 epoch 50]
+                near 80
+
+----------------------regnet---------------------------------------
+
+model no.36  => [batch size 32 epoch 50]
+                near 80
